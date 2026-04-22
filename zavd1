@@ -1,0 +1,57 @@
+class Student:
+    def __init__(self, name, surname, age):
+        self.name = name
+        self.surname = surname
+        self.age = age
+        self.grades = []
+
+    def add_grade(self, grade):
+        self.grades.append(grade)
+
+    def show_grades(self):
+        return ", ".join(map(str, self.grades)) if self.grades else "Оцінок немає"
+
+    def __str__(self):
+        return f"Студент: {self.name} {self.surname}, Вік: {self.age}"
+
+
+class Car:
+    def __init__(self, brand, model, speed, year):
+        self.brand = brand
+        self.model = model
+        self.speed = speed
+        self.year = year
+
+    def info(self):
+        print(self)
+
+    def __str__(self):
+        return f"Авто: {self.brand} {self.model}, {self.year} рік, Швидкість: {self.speed} км/год"
+
+
+def menu_task1():
+    student = Student("Влад", "Мошна", 14)
+    car = Car("BMW", "M5", 250, 2020)
+
+    while True:
+        print("\n=== Меню Завдання 1 ===")
+        print("[1] Додати оцінку студенту")
+        print("[2] Показати оцінки студента")
+        print("[3] Показати інформацію про авто")
+        print("[4] Вийти")
+
+        choice = input("Ваш вибір: ")
+
+        if choice == "1":
+            grade = int(input("Введіть оцінку: "))
+            student.add_grade(grade)
+
+        elif choice == "2":
+            print(student)
+            print("Оцінки:", student.show_grades())
+
+        elif choice == "3":
+            car.info()
+
+        elif choice == "4":
+            break
